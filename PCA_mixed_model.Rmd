@@ -147,7 +147,8 @@ Fit mixed models to all measured properties using lmer.
 out.pca.x_g <- all.pca.x %>%
   gather("component", "value", 1:12) %>%
   group_by(component) %>%
-  nest()
+  nest() %>%
+  ungroup()
 
 out.pca.x_g <- out.pca.x_g %>%
   mutate(mixedmodel_vsris = map(data, model_vsris)) %>%
